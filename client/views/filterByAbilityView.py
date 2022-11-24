@@ -26,10 +26,8 @@ def filterByAbility( root ):
       data = s.recv(15000)
       db = eval( data.decode( 'utf-8' ))
       delete()
-      index = 0
       for i in db:
-        treev.insert("", 'end', text =f"L{index}", values =(i['code'], i['name'], i['type'], i['ability'], i['experience']))
-        index += 1
+        treev.insert("", 'end', text =f"L{i['code']}", values =(i['code'], i['name'], i['type'], i['ability'], i['experience']))
   
   container = ttk.Frame( root, style = "Container.TFrame" )
   ttk.Style().configure( "Container.TFrame", background = "#2d2d2d", foreground = "white", font = ('Arial', 13, 'bold'), marginx = 10 )

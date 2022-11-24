@@ -38,10 +38,8 @@ def filterByExperience( root ):
       data = s.recv(15000)
       db = eval( data.decode( 'utf-8' ))
       delete()
-      index = 0
       for i in db:
-        treev.insert("", 'end', text =f"L{index}", values =(i['code'], i['name'], i['type'], i['ability'], i['experience']))
-        index += 1
+        treev.insert("", 'end', text = f"L{i['code']}", values = (i['code'], i['name'], i['type'], i['ability'], i['experience']))
   
   container = ttk.Frame( root, style = "Container.TFrame" )
   ttk.Style().configure( "Container.TFrame", background = "#2d2d2d", foreground = "white", font = ('Arial', 13, 'bold'), marginx = 10 )
@@ -54,7 +52,7 @@ def filterByExperience( root ):
   experience = StringVar()
   Entry( root, textvariable = experience, width = 10, font = ('Arial', 13, 'bold') ).pack( in_ = container2, side = LEFT, pady = 10, padx = 10 )
   operator = StringVar()
-  ttk.Combobox( root, state = "readonly", values = ["<", ">", "==", "<=", ">="], textvariable = operator, width = 5, font = ('Arial', 13, 'bold') ).pack( in_ = container2, side = LEFT, pady = 10, padx = 10 )
+  ttk.Combobox( root, state = "readonly", values = ["<", ">", "==", "<=", ">=", "!="], textvariable = operator, width = 5, font = ('Arial', 13, 'bold') ).pack( in_ = container2, side = LEFT, pady = 10, padx = 10 )
   Button( root, text = "Buscar", cursor = "hand2", relief = "flat", width = "10", bg = "#2f4f4f", fg = "white", font = ('Arial', 13, 'bold'), command=lambda: search() ).pack( in_ = container2, side = LEFT, pady = 10, padx = 10 )
   container2.pack( side = TOP, fill = 'x' )
 

@@ -28,7 +28,7 @@ def filterByType( root ):
       db = eval( data.decode( 'utf-8' ))
       delete()
       for i in db:
-        treev.insert("", 'end', text =f"L{i[0]}", values =(i[1]['code'], i[1]['name'], i[1]['type'], i[1]['ability'], i[1]['experience']))
+        treev.insert("", 'end', text =f"L{i['code']}", values =(i['code'], i['name'], i['type'], i['ability'], i['experience']))
       
   
   container = ttk.Frame( root, style = "Container.TFrame" )

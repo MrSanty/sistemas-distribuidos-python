@@ -30,7 +30,7 @@ def filterByCode( root ):
       data = s.recv(15000)
       db = eval( data.decode( 'utf-8' ))
       delete()
-      treev.insert("", 'end', text ="L1", values =(db['code'], db['name'], db['type'], db['ability'], db['experience']))
+      treev.insert("", 'end', text = f"L{db['code']}", values = (db['code'], db['name'], db['type'], db['ability'], db['experience']))
   
   container = ttk.Frame( root, style = "Container.TFrame" )
   ttk.Style().configure( "Container.TFrame", background = "#2d2d2d", foreground = "white", font = ('Arial', 13, 'bold'), marginx = 10 )

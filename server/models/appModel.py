@@ -5,6 +5,7 @@ class appModel:
   db = {}
   
   def updateData( self ):
+    print('start')
     for i in range( 1, 151 ):
       req = requests.get( f'https://pokeapi.co/api/v2/pokemon/{i}/' )
       data = req.json()
@@ -19,7 +20,7 @@ class appModel:
     print('Updated db')
   
   def updateEvery5Seconds( self ):
-    threading.Timer( 5, self.updateEvery5Seconds ).start()
+    threading.Timer( 40, self.updateEvery5Seconds ).start()
     self.updateData()
     
   def getAll( self ):
@@ -29,7 +30,7 @@ class appModel:
     return self.db[ int(code) ]
   
   def getFilterByType( self, type ):
-    return [ item for item in self.db.items() if item[1]['type'] == type ]
+    return [ item for item in self.db.values() if item['type'] == type ]
 
   def getFilterByAbility( self, ability ):
     return [ item for item in self.db.values() if item['ability'] == ability ]
